@@ -23,9 +23,6 @@ from PySide import QtCore, QtGui
 
 from mountpoints.workflowstep import WorkflowStepMountPoint
 
-import sys
-sys.path.append('../../../../')
-
 from fieldworkmodelselectorstep.widgets.configuredialog import ConfigureDialog
 from fieldworkmodelselectorstep.fieldworkmodelselectordata import StepState
 
