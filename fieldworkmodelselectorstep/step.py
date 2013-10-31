@@ -33,11 +33,13 @@ class FieldworkModelSelectorStep(WorkflowStepMountPoint):
     
     def __init__(self, location):
         super(FieldworkModelSelectorStep, self).__init__('Fieldwork Model Selector', location)
+        self._category = 'Fieldwork'
         self._state = StepState()
         self._icon = QtGui.QImage(':/zincmodelsource/images/zinc_model_icon.png')   # change this
         self.addPort(('http://physiomeproject.org/workflow/1.0/rdf-schema#port', 'http://physiomeproject.org/workflow/1.0/rdf-schema#uses', 'ju#fieldworkmodeldict'))
         self.addPort(('http://physiomeproject.org/workflow/1.0/rdf-schema#port', 'http://physiomeproject.org/workflow/1.0/rdf-schema#provides', 'ju#fieldworkmodel'))
         self.model = None
+        self.modelDict = None
 
     def configure(self):
         d = ConfigureDialog(self._state)
@@ -74,14 +76,18 @@ class FieldworkModelSelectorStep(WorkflowStepMountPoint):
         d = ConfigureDialog(self._state)
         self._configured = d.validate()
  
-    def execute(self, dataIn):
-        if not isinstance(dataIn, dict):
-            raise TypeError, 'FieldworkModelSelectorStep expects a dictionary as input'
+    def setPortData(self, index, dataIn):
+        # if not isinstance(dataIn, dict):
+            # raise TypeError, 'FieldworkModelSelectorStep expects a dictionary as input'
 
-        self.model = dataIn[self._state._modelName]
+        print dataIn
+        self.modelDict = dataIn
+
+    def execute(self):
+        self.model = self.modelDict[self._state._modelName]
         self._doneExecution()
 
-    def portOutput(self):
+    def getPortData(self, index):
         return self.model
      
 def getConfigFilename(identifier):
