@@ -28,7 +28,7 @@ from fieldworkmodelselectorstep.fieldworkmodelselectordata import StepState
 
 class FieldworkModelSelectorStep(WorkflowStepMountPoint):
     '''
-    Select a model from a dictionary of models
+    Select a fieldwork model from a dictionary of models.
     '''
     
     def __init__(self, location):
