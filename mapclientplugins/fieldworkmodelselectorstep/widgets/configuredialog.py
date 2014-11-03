@@ -21,8 +21,8 @@ import os
 
 from PySide.QtGui import QDialog, QFileDialog, QDialogButtonBox
 
-from fieldworkmodelselectorstep.widgets.ui_configuredialog import Ui_ConfigureDialog
-from fieldworkmodelselectorstep.fieldworkmodelselectordata import StepState
+from mapclientplugins.fieldworkmodelselectorstep.widgets.ui_configuredialog import Ui_ConfigureDialog
+from mapclientplugins.fieldworkmodelselectorstep.fieldworkmodelselectordata import StepState
 
 REQUIRED_STYLE_SHEET = 'border: 1px solid red; border-radius: 3px'
 DEFAULT_STYLE_SHEET = ''

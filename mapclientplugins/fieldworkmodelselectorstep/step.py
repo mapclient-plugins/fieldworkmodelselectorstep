@@ -21,10 +21,10 @@ import os
 
 from PySide import QtCore, QtGui
 
-from mountpoints.workflowstep import WorkflowStepMountPoint
+from mapclient.mountpoints.workflowstep import WorkflowStepMountPoint
 
-from fieldworkmodelselectorstep.widgets.configuredialog import ConfigureDialog
-from fieldworkmodelselectorstep.fieldworkmodelselectordata import StepState
+from mapclientplugins.fieldworkmodelselectorstep.widgets.configuredialog import ConfigureDialog
+from mapclientplugins.fieldworkmodelselectorstep.fieldworkmodelselectordata import StepState
 
 class FieldworkModelSelectorStep(WorkflowStepMountPoint):
     '''
