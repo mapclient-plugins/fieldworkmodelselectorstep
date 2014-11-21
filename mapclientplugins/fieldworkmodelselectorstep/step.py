@@ -36,8 +36,12 @@ class FieldworkModelSelectorStep(WorkflowStepMountPoint):
         self._category = 'Fieldwork'
         self._state = StepState()
         # self._icon = QtGui.QImage(':/zincmodelsource/images/zinc_model_icon.png')   # change this
-        self.addPort(('http://physiomeproject.org/workflow/1.0/rdf-schema#port', 'http://physiomeproject.org/workflow/1.0/rdf-schema#uses', 'ju#fieldworkmodeldict'))
-        self.addPort(('http://physiomeproject.org/workflow/1.0/rdf-schema#port', 'http://physiomeproject.org/workflow/1.0/rdf-schema#provides', 'ju#fieldworkmodel'))
+        self.addPort(('http://physiomeproject.org/workflow/1.0/rdf-schema#port',
+                      'http://physiomeproject.org/workflow/1.0/rdf-schema#uses',
+                      'ju#fieldworkmodeldict'))
+        self.addPort(('http://physiomeproject.org/workflow/1.0/rdf-schema#port',
+                      'http://physiomeproject.org/workflow/1.0/rdf-schema#provides',
+                      'ju#fieldworkmodel'))
         self.model = None
         self.modelDict = None
 
