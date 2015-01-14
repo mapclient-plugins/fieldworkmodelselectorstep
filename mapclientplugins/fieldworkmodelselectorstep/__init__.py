@@ -19,4 +19,7 @@ This file is part of MAP Client. (http://launchpad.net/mapclient)
 """
 __version__ = '0.1.0'
 __author__ = 'Ju Zhang'
+__stepname__ = 'Fieldwork Model Selector'
+__location__ = 'https://github.com/mapclient-plugins/fieldworkmodelselectorstep/archive/master.zip'
+
 from mapclientplugins.fieldworkmodelselectorstep import step

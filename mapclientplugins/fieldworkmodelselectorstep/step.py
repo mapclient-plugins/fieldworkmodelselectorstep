@@ -84,7 +84,7 @@ class FieldworkModelSelectorStep(WorkflowStepMountPoint):
         # if not isinstance(dataIn, dict):
             # raise TypeError, 'FieldworkModelSelectorStep expects a dictionary as input'
 
-        print dataIn
+        print(dataIn)
         self.modelDict = dataIn
 
     def execute(self):
