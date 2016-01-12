@@ -18,8 +18,9 @@ This file is part of MAP Client. (http://launchpad.net/mapclient)
     along with MAP Client.  If not, see <http://www.gnu.org/licenses/>..
 '''
 import os
+import json
 
-from PySide import QtCore, QtGui
+from PySide import QtGui
 
 from mapclient.mountpoints.workflowstep import WorkflowStepMountPoint
 
@@ -61,22 +62,26 @@ class FieldworkModelSelectorStep(WorkflowStepMountPoint):
      
     def setIdentifier(self, identifier):
         self._state._identifier = identifier
-     
-    def serialize(self, location):
-        configuration_file = os.path.join(location, getConfigFilename(self._state._identifier))
-        s = QtCore.QSettings(configuration_file, QtCore.QSettings.IniFormat)
-        s.beginGroup('state')
-        s.setValue('identifier', self._state._identifier)
-        s.setValue('modelName', self._state._modelName)
-        s.endGroup()
-     
-    def deserialize(self, location):
-        configuration_file = os.path.join(location, getConfigFilename(self._state._identifier))
-        s = QtCore.QSettings(configuration_file, QtCore.QSettings.IniFormat)
-        s.beginGroup('state')
-        self._state._identifier = s.value('identifier', '')
-        self._state._modelName = s.value('modelName', '')
-        s.endGroup()
+
+    def serialize(self):
+        '''
+        Add code to serialize this step to disk. Returns a json string for
+        mapclient to serialise.
+        '''
+        config = {'identifier': self._state._identifier,
+                  'modelName': self._state._modelName,
+                  }
+        return json.dumps(config, default=lambda o: o.__dict__, sort_keys=True, indent=4)
+
+    def deserialize(self, string):
+        '''
+        Add code to deserialize this step from disk. Parses a json string
+        given by mapclient
+        '''
+        config = json.loads(string)
+        self._state._identifier = config['identifier']
+        self._state._modelName = config['modelName']
+
         d = ConfigureDialog(self._state)
         self._configured = d.validate()
  
@@ -93,6 +98,4 @@ class FieldworkModelSelectorStep(WorkflowStepMountPoint):
 
     def getPortData(self, index):
         return self.model
-     
-def getConfigFilename(identifier):
-    return identifier + '.conf'
+    
