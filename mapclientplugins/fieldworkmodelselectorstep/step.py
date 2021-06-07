@@ -24,11 +24,12 @@ from mapclient.mountpoints.workflowstep import WorkflowStepMountPoint
 from mapclientplugins.fieldworkmodelselectorstep.widgets.configuredialog import ConfigureDialog
 from mapclientplugins.fieldworkmodelselectorstep.fieldworkmodelselectordata import StepState
 
+
 class FieldworkModelSelectorStep(WorkflowStepMountPoint):
     '''
     Select a fieldwork model from a dictionary of models.
     '''
-    
+
     def __init__(self, location):
         super(FieldworkModelSelectorStep, self).__init__('Fieldwork Model Selector', location)
         self._category = 'Fieldwork'
@@ -49,14 +50,14 @@ class FieldworkModelSelectorStep(WorkflowStepMountPoint):
         if d.exec_():
             self._state = d.getState()
             # self.serialize()
-            
+
         self._configured = d.validate()
         if self._configured and self._configuredObserver:
             self._configuredObserver()
-    
+
     def getIdentifier(self):
         return self._state._identifier
-     
+
     def setIdentifier(self, identifier):
         self._state._identifier = identifier
 
@@ -81,10 +82,10 @@ class FieldworkModelSelectorStep(WorkflowStepMountPoint):
 
         d = ConfigureDialog(self._state)
         self._configured = d.validate()
- 
+
     def setPortData(self, index, dataIn):
         # if not isinstance(dataIn, dict):
-            # raise TypeError, 'FieldworkModelSelectorStep expects a dictionary as input'
+        # raise TypeError, 'FieldworkModelSelectorStep expects a dictionary as input'
 
         print(dataIn)
         self.modelDict = dataIn
@@ -95,4 +96,3 @@ class FieldworkModelSelectorStep(WorkflowStepMountPoint):
 
     def getPortData(self, index):
         return self.model
-    

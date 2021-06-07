@@ -26,6 +26,7 @@ from mapclientplugins.fieldworkmodelselectorstep.fieldworkmodelselectordata impo
 REQUIRED_STYLE_SHEET = 'border: 1px solid red; border-radius: 3px'
 DEFAULT_STYLE_SHEET = ''
 
+
 class ConfigureDialog(QDialog):
     '''
     Configure dialog to present the user with the options to configure this step.
@@ -38,26 +39,26 @@ class ConfigureDialog(QDialog):
         QDialog.__init__(self, parent)
         self._ui = Ui_ConfigureDialog()
         self._ui.setupUi(self)
-        
+
         self.setState(state)
         self.validate()
         self._makeConnections()
-        
+
     def _makeConnections(self):
         self._ui.identifierLineEdit.textChanged.connect(self.validate)
         self._ui.modelNameLineEdit.textChanged.connect(self.validate)
-      
+
     def setState(self, state):
         self._ui.identifierLineEdit.setText(state._identifier)
         self._ui.modelNameLineEdit.setText(state._modelName)
-    
+
     def getState(self):
         state = StepState()
         state._identifier = self._ui.identifierLineEdit.text()
         state._modelName = self._ui.modelNameLineEdit.text()
-        
+
         return state
-        
+
     def validate(self):
         identifierValid = len(self._ui.identifierLineEdit.text()) > 0
         if identifierValid:
