@@ -1,54 +1,78 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'configuredialog.ui'
-#
-# Created: Mon Oct 21 16:32:39 2013
-#      by: pyside-uic 0.2.14 running on PySide 1.1.2
-#
-# WARNING! All changes made in this file will be lost!
+################################################################################
+## Form generated from reading UI file 'configuredialog.ui'
+##
+## Created by: Qt User Interface Compiler version 5.15.2
+##
+## WARNING! All changes made in this file will be lost when recompiling UI file!
+################################################################################
 
-from PySide import QtCore, QtGui
+from PySide2.QtCore import *
+from PySide2.QtGui import *
+from PySide2.QtWidgets import *
+
 
 class Ui_ConfigureDialog(object):
     def setupUi(self, ConfigureDialog):
-        ConfigureDialog.setObjectName("ConfigureDialog")
+        if not ConfigureDialog.objectName():
+            ConfigureDialog.setObjectName(u"ConfigureDialog")
         ConfigureDialog.resize(593, 178)
-        self.verticalLayout_2 = QtGui.QVBoxLayout(ConfigureDialog)
-        self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.groupBox = QtGui.QGroupBox(ConfigureDialog)
-        self.groupBox.setTitle("")
-        self.groupBox.setObjectName("groupBox")
-        self.gridLayout = QtGui.QGridLayout(self.groupBox)
-        self.gridLayout.setObjectName("gridLayout")
-        self.modelNameLabel = QtGui.QLabel(self.groupBox)
-        self.modelNameLabel.setObjectName("modelNameLabel")
+        self.verticalLayout_2 = QVBoxLayout(ConfigureDialog)
+        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.groupBox = QGroupBox(ConfigureDialog)
+        self.groupBox.setObjectName(u"groupBox")
+        self.gridLayout = QGridLayout(self.groupBox)
+        self.gridLayout.setObjectName(u"gridLayout")
+        self.modelNameLabel = QLabel(self.groupBox)
+        self.modelNameLabel.setObjectName(u"modelNameLabel")
+
         self.gridLayout.addWidget(self.modelNameLabel, 1, 0, 1, 1)
-        self.identifierLineEdit = QtGui.QLineEdit(self.groupBox)
-        self.identifierLineEdit.setObjectName("identifierLineEdit")
+
+        self.identifierLineEdit = QLineEdit(self.groupBox)
+        self.identifierLineEdit.setObjectName(u"identifierLineEdit")
+
         self.gridLayout.addWidget(self.identifierLineEdit, 0, 1, 1, 1)
-        self.identifierLabel = QtGui.QLabel(self.groupBox)
-        self.identifierLabel.setObjectName("identifierLabel")
+
+        self.identifierLabel = QLabel(self.groupBox)
+        self.identifierLabel.setObjectName(u"identifierLabel")
+
         self.gridLayout.addWidget(self.identifierLabel, 0, 0, 1, 1)
-        self.modelNameLineEdit = QtGui.QLineEdit(self.groupBox)
-        self.modelNameLineEdit.setObjectName("modelNameLineEdit")
+
+        self.modelNameLineEdit = QLineEdit(self.groupBox)
+        self.modelNameLineEdit.setObjectName(u"modelNameLineEdit")
+
         self.gridLayout.addWidget(self.modelNameLineEdit, 1, 1, 1, 1)
-        spacerItem = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
-        self.gridLayout.addItem(spacerItem, 2, 1, 1, 1)
+
+        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.gridLayout.addItem(self.verticalSpacer, 2, 1, 1, 1)
+
+
         self.verticalLayout_2.addWidget(self.groupBox)
-        self.buttonBox = QtGui.QDialogButtonBox(ConfigureDialog)
-        self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
-        self.buttonBox.setStandardButtons(QtGui.QDialogButtonBox.Cancel|QtGui.QDialogButtonBox.Ok)
-        self.buttonBox.setObjectName("buttonBox")
+
+        self.buttonBox = QDialogButtonBox(ConfigureDialog)
+        self.buttonBox.setObjectName(u"buttonBox")
+        self.buttonBox.setOrientation(Qt.Horizontal)
+        self.buttonBox.setStandardButtons(QDialogButtonBox.Cancel|QDialogButtonBox.Ok)
+
         self.verticalLayout_2.addWidget(self.buttonBox)
+
+#if QT_CONFIG(shortcut)
         self.identifierLabel.setBuddy(self.identifierLineEdit)
+#endif // QT_CONFIG(shortcut)
 
         self.retranslateUi(ConfigureDialog)
-        QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL("accepted()"), ConfigureDialog.accept)
-        QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL("rejected()"), ConfigureDialog.reject)
-        QtCore.QMetaObject.connectSlotsByName(ConfigureDialog)
+        self.buttonBox.accepted.connect(ConfigureDialog.accept)
+        self.buttonBox.rejected.connect(ConfigureDialog.reject)
+
+        QMetaObject.connectSlotsByName(ConfigureDialog)
+    # setupUi
 
     def retranslateUi(self, ConfigureDialog):
-        ConfigureDialog.setWindowTitle(QtGui.QApplication.translate("ConfigureDialog", "Configure - Fieldwork Model Selector", None, QtGui.QApplication.UnicodeUTF8))
-        self.modelNameLabel.setText(QtGui.QApplication.translate("ConfigureDialog", "Model Name:", None, QtGui.QApplication.UnicodeUTF8))
-        self.identifierLabel.setText(QtGui.QApplication.translate("ConfigureDialog", "Identifier:", None, QtGui.QApplication.UnicodeUTF8))
+        ConfigureDialog.setWindowTitle(QCoreApplication.translate("ConfigureDialog", u"Configure - Fieldwork Model Selector", None))
+        self.groupBox.setTitle("")
+        self.modelNameLabel.setText(QCoreApplication.translate("ConfigureDialog", u"Model Name:", None))
+        self.identifierLabel.setText(QCoreApplication.translate("ConfigureDialog", u"Identifier:", None))
+    # retranslateUi
 

@@ -17,15 +17,15 @@ This file is part of MAP Client. (http://launchpad.net/mapclient)
     You should have received a copy of the GNU General Public License
     along with MAP Client.  If not, see <http://www.gnu.org/licenses/>..
 '''
-import os
 
-from PySide.QtGui import QDialog, QFileDialog, QDialogButtonBox
+from PySide2.QtWidgets import QDialog, QDialogButtonBox
 
 from mapclientplugins.fieldworkmodelselectorstep.widgets.ui_configuredialog import Ui_ConfigureDialog
 from mapclientplugins.fieldworkmodelselectorstep.fieldworkmodelselectordata import StepState
 
 REQUIRED_STYLE_SHEET = 'border: 1px solid red; border-radius: 3px'
 DEFAULT_STYLE_SHEET = ''
+
 
 class ConfigureDialog(QDialog):
     '''
@@ -39,26 +39,26 @@ class ConfigureDialog(QDialog):
         QDialog.__init__(self, parent)
         self._ui = Ui_ConfigureDialog()
         self._ui.setupUi(self)
-        
+
         self.setState(state)
         self.validate()
         self._makeConnections()
-        
+
     def _makeConnections(self):
         self._ui.identifierLineEdit.textChanged.connect(self.validate)
         self._ui.modelNameLineEdit.textChanged.connect(self.validate)
-      
+
     def setState(self, state):
         self._ui.identifierLineEdit.setText(state._identifier)
         self._ui.modelNameLineEdit.setText(state._modelName)
-    
+
     def getState(self):
         state = StepState()
         state._identifier = self._ui.identifierLineEdit.text()
         state._modelName = self._ui.modelNameLineEdit.text()
-        
+
         return state
-        
+
     def validate(self):
         identifierValid = len(self._ui.identifierLineEdit.text()) > 0
         if identifierValid:
