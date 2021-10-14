@@ -27,26 +27,16 @@ class Ui_ConfigureDialog(object):
         self.modelNameLabel = QLabel(self.groupBox)
         self.modelNameLabel.setObjectName(u"modelNameLabel")
 
-        self.gridLayout.addWidget(self.modelNameLabel, 1, 0, 1, 1)
-
-        self.identifierLineEdit = QLineEdit(self.groupBox)
-        self.identifierLineEdit.setObjectName(u"identifierLineEdit")
-
-        self.gridLayout.addWidget(self.identifierLineEdit, 0, 1, 1, 1)
-
-        self.identifierLabel = QLabel(self.groupBox)
-        self.identifierLabel.setObjectName(u"identifierLabel")
-
-        self.gridLayout.addWidget(self.identifierLabel, 0, 0, 1, 1)
+        self.gridLayout.addWidget(self.modelNameLabel, 0, 0, 1, 1)
 
         self.modelNameLineEdit = QLineEdit(self.groupBox)
         self.modelNameLineEdit.setObjectName(u"modelNameLineEdit")
 
-        self.gridLayout.addWidget(self.modelNameLineEdit, 1, 1, 1, 1)
+        self.gridLayout.addWidget(self.modelNameLineEdit, 0, 1, 1, 1)
 
         self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
-        self.gridLayout.addItem(self.verticalSpacer, 2, 1, 1, 1)
+        self.gridLayout.addItem(self.verticalSpacer, 1, 1, 1, 1)
 
 
         self.verticalLayout_2.addWidget(self.groupBox)
@@ -58,9 +48,6 @@ class Ui_ConfigureDialog(object):
 
         self.verticalLayout_2.addWidget(self.buttonBox)
 
-#if QT_CONFIG(shortcut)
-        self.identifierLabel.setBuddy(self.identifierLineEdit)
-#endif // QT_CONFIG(shortcut)
 
         self.retranslateUi(ConfigureDialog)
         self.buttonBox.accepted.connect(ConfigureDialog.accept)
@@ -73,6 +60,5 @@ class Ui_ConfigureDialog(object):
         ConfigureDialog.setWindowTitle(QCoreApplication.translate("ConfigureDialog", u"Configure - Fieldwork Model Selector", None))
         self.groupBox.setTitle("")
         self.modelNameLabel.setText(QCoreApplication.translate("ConfigureDialog", u"Model Name:", None))
-        self.identifierLabel.setText(QCoreApplication.translate("ConfigureDialog", u"Identifier:", None))
     # retranslateUi
 

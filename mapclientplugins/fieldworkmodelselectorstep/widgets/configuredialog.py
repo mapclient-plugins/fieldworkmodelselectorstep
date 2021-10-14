@@ -45,34 +45,22 @@ class ConfigureDialog(QDialog):
         self._makeConnections()
 
     def _makeConnections(self):
-        self._ui.identifierLineEdit.textChanged.connect(self.validate)
         self._ui.modelNameLineEdit.textChanged.connect(self.validate)
 
     def setState(self, state):
-        self._ui.identifierLineEdit.setText(state._identifier)
         self._ui.modelNameLineEdit.setText(state._modelName)
 
     def getState(self):
         state = StepState()
-        state._identifier = self._ui.identifierLineEdit.text()
         state._modelName = self._ui.modelNameLineEdit.text()
 
         return state
 
     def validate(self):
-        identifierValid = len(self._ui.identifierLineEdit.text()) > 0
-        if identifierValid:
-            self._ui.identifierLineEdit.setStyleSheet(DEFAULT_STYLE_SHEET)
-        else:
-            self._ui.identifierLineEdit.setStyleSheet(REQUIRED_STYLE_SHEET)
-
         modelNameValid = len(self._ui.modelNameLineEdit.text()) > 0
         if modelNameValid:
             self._ui.modelNameLineEdit.setStyleSheet(DEFAULT_STYLE_SHEET)
         else:
             self._ui.modelNameLineEdit.setStyleSheet(REQUIRED_STYLE_SHEET)
 
-        valid = identifierValid & modelNameValid
-        self._ui.buttonBox.button(QDialogButtonBox.Ok).setEnabled(valid)
-
-        return valid
+        return modelNameValid

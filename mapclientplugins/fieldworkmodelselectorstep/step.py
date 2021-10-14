@@ -44,6 +44,8 @@ class FieldworkModelSelectorStep(WorkflowStepMountPoint):
         self.model = None
         self.modelDict = None
 
+        self._identifier = ''
+
     def configure(self):
         d = ConfigureDialog(self._state, self._main_window)
         d.setModal(True)
@@ -56,19 +58,17 @@ class FieldworkModelSelectorStep(WorkflowStepMountPoint):
             self._configuredObserver()
 
     def getIdentifier(self):
-        return self._state._identifier
+        return self._identifier
 
     def setIdentifier(self, identifier):
-        self._state._identifier = identifier
+        self._identifier = identifier
 
     def serialize(self):
         """
         Add code to serialize this step to disk. Returns a json string for
         mapclient to serialise.
         """
-        config = {'identifier': self._state._identifier,
-                  'modelName': self._state._modelName,
-                  }
+        config = {'modelName': self._state._modelName}
         return json.dumps(config, default=lambda o: o.__dict__, sort_keys=True, indent=4)
 
     def deserialize(self, string):
@@ -77,7 +77,6 @@ class FieldworkModelSelectorStep(WorkflowStepMountPoint):
         given by mapclient
         """
         config = json.loads(string)
-        self._state._identifier = config['identifier']
         self._state._modelName = config['modelName']
 
         d = ConfigureDialog(self._state)
