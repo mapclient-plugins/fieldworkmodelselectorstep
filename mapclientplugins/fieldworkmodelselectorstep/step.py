@@ -1,7 +1,7 @@
-'''
+"""
 MAP Client, a program to generate detailed musculoskeletal models for OpenSim.
     Copyright (C) 2012  University of Auckland
-    
+
 This file is part of MAP Client. (http://launchpad.net/mapclient)
 
     MAP Client is free software: you can redistribute it and/or modify
@@ -16,7 +16,7 @@ This file is part of MAP Client. (http://launchpad.net/mapclient)
 
     You should have received a copy of the GNU General Public License
     along with MAP Client.  If not, see <http://www.gnu.org/licenses/>..
-'''
+"""
 import json
 
 from mapclient.mountpoints.workflowstep import WorkflowStepMountPoint
@@ -26,9 +26,9 @@ from mapclientplugins.fieldworkmodelselectorstep.fieldworkmodelselectordata impo
 
 
 class FieldworkModelSelectorStep(WorkflowStepMountPoint):
-    '''
+    """
     Select a fieldwork model from a dictionary of models.
-    '''
+    """
 
     def __init__(self, location):
         super(FieldworkModelSelectorStep, self).__init__('Fieldwork Model Selector', location)
@@ -62,20 +62,20 @@ class FieldworkModelSelectorStep(WorkflowStepMountPoint):
         self._state._identifier = identifier
 
     def serialize(self):
-        '''
+        """
         Add code to serialize this step to disk. Returns a json string for
         mapclient to serialise.
-        '''
+        """
         config = {'identifier': self._state._identifier,
                   'modelName': self._state._modelName,
                   }
         return json.dumps(config, default=lambda o: o.__dict__, sort_keys=True, indent=4)
 
     def deserialize(self, string):
-        '''
+        """
         Add code to deserialize this step from disk. Parses a json string
         given by mapclient
-        '''
+        """
         config = json.loads(string)
         self._state._identifier = config['identifier']
         self._state._modelName = config['modelName']
