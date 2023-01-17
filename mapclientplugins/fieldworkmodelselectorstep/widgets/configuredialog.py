@@ -18,7 +18,7 @@ This file is part of MAP Client. (http://launchpad.net/mapclient)
     along with MAP Client.  If not, see <http://www.gnu.org/licenses/>..
 '''
 
-from PySide2.QtWidgets import QDialog, QDialogButtonBox
+from PySide6.QtWidgets import QDialog, QDialogButtonBox
 
 from mapclientplugins.fieldworkmodelselectorstep.widgets.ui_configuredialog import Ui_ConfigureDialog
 from mapclientplugins.fieldworkmodelselectorstep.fieldworkmodelselectordata import StepState
